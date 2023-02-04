@@ -65,6 +65,7 @@ class Login extends Component {
                 onChange={ this.handleChange }
               />
               <button
+                type="button"
                 data-testid="login-submit-button"
                 disabled={ buttonEnable }
                 onClick={ this.handleClick }
