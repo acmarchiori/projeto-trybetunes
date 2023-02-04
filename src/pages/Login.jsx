@@ -60,6 +60,7 @@ class Login extends Component {
                 type="text"
                 name="nameInput"
                 id="nameInput"
+                placeholder="qual o seu nome?"
                 required
                 value={ nameInput }
                 onChange={ this.handleChange }
@@ -70,7 +71,7 @@ class Login extends Component {
                 disabled={ buttonEnable }
                 onClick={ this.handleClick }
               >
-                Entrar
+                ENTRAR
               </button>
             </form>
           )
