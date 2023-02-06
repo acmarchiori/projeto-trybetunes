@@ -46,6 +46,8 @@ class AlbumList extends Component {
               data-testid={ `link-to-album-${album.collectionId}` }
               to={ `/album/${album.collectionId}` }
             >
+              <img src={ album.artworkUrl100 } alt={ album.collectionName } />
+              <br />
               {album.collectionName}
 
             </Link>
