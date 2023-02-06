@@ -28,7 +28,6 @@ class AlbumList extends Component {
 
   list = () => {
     const { artistName, generatedList } = this.state;
-    console.log(artistName);
 
     if (generatedList.length === 0) {
       return <p>Nenhum álbum foi encontrado</p>;
@@ -43,11 +42,13 @@ class AlbumList extends Component {
 
         {generatedList.map((album) => (
           <p key={ album.collectionId }>
-            {album.collectionName}
             <Link
               data-testid={ `link-to-album-${album.collectionId}` }
               to={ `/album/${album.collectionId}` }
-            />
+            >
+              {album.collectionName}
+
+            </Link>
           </p>
         ))}
 
