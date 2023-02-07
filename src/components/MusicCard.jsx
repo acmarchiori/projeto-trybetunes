@@ -29,8 +29,8 @@ class MusicCard extends Component {
       {
         [name]: newValue,
       },
-      this.removeFavorite,
       this.fetchFavorite,
+      this.removeFavorite,
     );
   };
 
@@ -103,13 +103,7 @@ class MusicCard extends Component {
     return (
       <div>
         <li>
-          <p>
-            { musics.trackNumber }
-            {' '}
-            -
-            {' '}
-            { musics.trackName }
-          </p>
+          <p>{ musics.trackName }</p>
           <audio
             data-testid="audio-component"
             src={ musics.previewUrl }
