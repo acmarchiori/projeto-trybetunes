@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from '../pages/Loading';
 
 class MusicCard extends Component {
@@ -19,7 +19,7 @@ class MusicCard extends Component {
     const newValue = (type === 'checkbox' ? target.checked : target.value);
     this.setState({
       [name]: newValue,
-    }, this.fetchFavorite);
+    }, this.fetchFavorite, this.removeFavorite);
   };
 
   getFavorite = async () => {
@@ -33,6 +33,19 @@ class MusicCard extends Component {
         favoriteSongs: favList,
       });
       return favoriteSongs;
+    });
+  };
+
+  removeFavorite = async () => {
+    const { musics } = this.props;
+    this.setState({
+      isLoading: true,
+    }, async () => {
+      const favList = await removeSong(musics);
+      this.setState({
+        isLoading: false,
+        favoriteSongs: favList,
+      });
     });
   };
 
