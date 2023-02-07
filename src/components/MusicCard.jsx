@@ -29,8 +29,7 @@ class MusicCard extends Component {
       {
         [name]: newValue,
       },
-      this.fetchFavorite,
-      this.removeFavorite,
+      this.handleFavorite,
     );
   };
 
@@ -48,54 +47,28 @@ class MusicCard extends Component {
     });
   };
 
-  removeFavorite = async () => {
-    const { musics } = this.props;
-    console.log('entrei');
-    this.setState({
-      isLoading: true,
-    }, async () => {
-      await removeSong(musics);
+  handleFavorite = async () => {
+    const { musics, isFavorite } = this.props;
+    if (isFavorite) {
       this.setState({
-        isLoading: false,
+        isLoading: true,
+      }, async () => {
+        await removeSong(musics);
+        this.setState({
+          isLoading: false,
+        });
       });
-    });
-  };
-
-  fetchFavorite = async () => {
-    const { musics } = this.props;
-    // console.log(musics);
-    this.setState({
-      isLoading: true,
-    }, async () => {
-      await addSong(musics);
+    } else {
       this.setState({
-        isLoading: false,
+        isLoading: true,
+      }, async () => {
+        await addSong(musics);
+        this.setState({
+          isLoading: false,
+        });
       });
-    });
+    }
   };
-
-  // handleFavorite = async () => {
-  //   const { musics, isFavorite } = this.props;
-  //   if (isFavorite) {
-  //     this.state({
-  //       isLoading: true,
-  //     }, async () => {
-  //       await removeSong(musics);
-  //       this.setState({
-  //         isLoading: false,
-  //       });
-  //     });
-  //   } else {
-  //     this.setState({
-  //       isLoading: true,
-  //     }, async () => {
-  //       await addSong(musics);
-  //       this.setState({
-  //         isLoading: false,
-  //       });
-  //     });
-  //   }
-  // };
 
   list = () => {
     const { checked } = this.state;
