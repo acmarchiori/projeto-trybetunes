@@ -12,14 +12,26 @@ class MusicCard extends Component {
 
   componentDidMount() {
     this.getFavorite();
+    this.funcChecked();
   }
+
+  funcChecked = () => {
+    const { isFavorite } = this.props;
+    if (isFavorite) {
+      this.setState({ checked: true });
+    }
+  };
 
   handleChange = ({ target }) => {
     const { name, type } = target;
     const newValue = (type === 'checkbox' ? target.checked : target.value);
-    this.setState({
-      [name]: newValue,
-    }, this.fetchFavorite, this.removeFavorite);
+    this.setState(
+      {
+        [name]: newValue,
+      },
+      this.fetchFavorite,
+      this.removeFavorite,
+    );
   };
 
   getFavorite = async () => {
@@ -38,19 +50,20 @@ class MusicCard extends Component {
 
   removeFavorite = async () => {
     const { musics } = this.props;
+    console.log('entrei');
     this.setState({
       isLoading: true,
     }, async () => {
-      const favList = await removeSong(musics);
+      await removeSong(musics);
       this.setState({
         isLoading: false,
-        favoriteSongs: favList,
       });
     });
   };
 
   fetchFavorite = async () => {
     const { musics } = this.props;
+    // console.log(musics);
     this.setState({
       isLoading: true,
     }, async () => {
@@ -61,12 +74,32 @@ class MusicCard extends Component {
     });
   };
 
+  // handleFavorite = async () => {
+  //   const { musics, isFavorite } = this.props;
+  //   if (isFavorite) {
+  //     this.state({
+  //       isLoading: true,
+  //     }, async () => {
+  //       await removeSong(musics);
+  //       this.setState({
+  //         isLoading: false,
+  //       });
+  //     });
+  //   } else {
+  //     this.setState({
+  //       isLoading: true,
+  //     }, async () => {
+  //       await addSong(musics);
+  //       this.setState({
+  //         isLoading: false,
+  //       });
+  //     });
+  //   }
+  // };
+
   list = () => {
     const { checked } = this.state;
-    const { musics, isFavorite } = this.props;
-    if (isFavorite) {
-      this.setState({ checked: true });
-    }
+    const { musics } = this.props;
     return (
       <div>
         <li>
