@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import MusicCard from '../components/MusicCard';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
-import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends Component {
   state = {
@@ -11,28 +10,11 @@ class Album extends Component {
     collectionName: '',
     artworkUrl100: '',
     generatedList: [],
-    // isFavorite: false,
   };
 
   componentDidMount() {
     this.fetchMusic();
-    this.getFavorite();
   }
-
-  getFavorite = async () => {
-    await getFavoriteSongs();
-  };
-
-  // getFavorite = async () => {
-  //   this.setState({
-  //     isLoading: true,
-  //   }, async () => {
-  //     await getFavoriteSongs();
-  //     this.setState({
-  //       isLoading: false,
-  //     });
-  //   });
-  // };
 
   fetchMusic = async () => {
     const { match: { params: { id } } } = this.props;
