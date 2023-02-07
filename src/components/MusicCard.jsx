@@ -29,8 +29,8 @@ class MusicCard extends Component {
       {
         [name]: newValue,
       },
-      this.fetchFavorite,
       this.removeFavorite,
+      this.fetchFavorite,
     );
   };
 
