@@ -1,34 +1,36 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { addSong } from '../services/favoriteSongsAPI';
-// import Loading from '../pages/Loading';
+import { addSong } from '../services/favoriteSongsAPI';
+import Loading from '../pages/Loading';
 
 class MusicCard extends Component {
   state = {
-    // checked: false,
-    // trackId: '',
+    checked: false,
+    isLoading: false,
   };
-
-  // componentDidMount() {
-  //   this.fetchMusic();
-  //   this.fetchFavorite();
-  // }
 
   handleChange = ({ target }) => {
     const { name, type } = target;
     const newValue = (type === 'checkbox' ? target.checked : target.value);
     this.setState({
       [name]: newValue,
+    }, this.fetchFavorite);
+  };
+
+  fetchFavorite = async () => {
+    const { musics } = this.props;
+    this.setState({
+      isLoading: true,
+    }, async () => {
+      await addSong(musics);
+      this.setState({
+        isLoading: false,
+      });
     });
   };
 
-  // fetchFavorite = async () => {
-  //   const { trackId } = this.state;
-  //   const favorite = await addSong(trackId);
-  //   return favorite;
-  // };
-
   list = () => {
+    const { checked } = this.state;
     const { musics } = this.props;
     return (
       <div>
@@ -46,14 +48,14 @@ class MusicCard extends Component {
             <code>audio</code>
             .
           </audio>
-          <label htmlFor="favorita">
+          <label htmlFor="favorite">
             Favorita
             <input
               data-testid={ `checkbox-music-${musics.trackId}` }
               type="checkbox"
-              name="favorita"
-              id={ musics }
-              // checked={ checked }
+              name="checked"
+              id="favorite"
+              checked={ checked }
               onChange={ this.handleChange }
             />
           </label>
@@ -63,12 +65,12 @@ class MusicCard extends Component {
   };
 
   render() {
+    const { isLoading } = this.state;
+    if (isLoading) return <Loading />;
     return (
       <div>
         <ol>
-          {
-            this.list()
-          }
+          { this.list() }
         </ol>
       </div>
     );
