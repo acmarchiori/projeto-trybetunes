@@ -5,20 +5,19 @@ import Loading from '../pages/Loading';
 
 class MusicCard extends Component {
   state = {
-    checked: false,
     isLoading: false,
-    favoriteSongs: [],
+    isFavorite: false,
   };
 
   componentDidMount() {
-    this.getFavorite();
     this.funcChecked();
   }
 
-  funcChecked = () => {
-    const { isFavorite } = this.props;
-    if (isFavorite) {
-      this.setState({ checked: true });
+  funcChecked = async () => {
+    const { musics } = this.props;
+    const favorites = await getFavoriteSongs();
+    if (favorites.some(({ trackId }) => musics.trackId === trackId)) {
+      this.setState({ isFavorite: true });
     }
   };
 
@@ -33,45 +32,30 @@ class MusicCard extends Component {
     );
   };
 
-  getFavorite = async () => {
-    const { favoriteSongs } = this.state;
+  handleFavorite = async () => {
+    const { isFavorite } = this.state;
+    const { musics } = this.props;
     this.setState({
       isLoading: true,
-    }, async () => {
-      const favList = await getFavoriteSongs();
+    });
+    if (isFavorite) {
+      await removeSong(musics);
       this.setState({
-        isLoading: false,
-        favoriteSongs: favList,
+        isFavorite: false,
       });
-      return favoriteSongs;
+    } else {
+      await addSong(musics);
+      this.setState({
+        isFavorite: true,
+      });
+    }
+    this.setState({
+      isLoading: false,
     });
   };
 
-  handleFavorite = async () => {
-    const { musics, isFavorite } = this.props;
-    if (isFavorite) {
-      this.setState({
-        isLoading: true,
-      }, async () => {
-        await removeSong(musics);
-        this.setState({
-          isLoading: false,
-        });
-      });
-    } else {
-      this.setState({
-        isLoading: true,
-      }, async () => {
-        await addSong(musics);
-        this.setState({
-          isLoading: false,
-        });
-      });
-    }
-  };
-
   list = () => {
-    const { checked } = this.state;
+    const { isFavorite } = this.state;
     const { musics } = this.props;
     return (
       <div>
@@ -96,7 +80,7 @@ class MusicCard extends Component {
               type="checkbox"
               name="checked"
               id="favorite"
-              checked={ checked }
+              checked={ isFavorite }
               onChange={ this.handleChange }
             />
           </label>
@@ -120,6 +104,7 @@ class MusicCard extends Component {
 
 MusicCard.propTypes = {
   musics: PropTypes.obj,
+  isFavorite: PropTypes.bool,
 }.isrequired;
 
 export default MusicCard;

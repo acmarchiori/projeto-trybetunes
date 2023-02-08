@@ -45,18 +45,12 @@ class Album extends Component {
         </section>
         <div>
           {
-            generatedList.slice(1).map((music) => {
-              const favorites = JSON.parse(localStorage.getItem('favorite_songs'));
-              const isFavorite = favorites
-                .some(({ trackId }) => music.trackId === trackId);
-              return (
-                <MusicCard
-                  key={ music.trackNumber }
-                  musics={ music }
-                  isFavorite={ isFavorite }
-                />
-              );
-            })
+            generatedList.slice(1).map((music) => (
+              <MusicCard
+                key={ music.trackNumber }
+                musics={ music }
+              />
+            ))
           }
         </div>
       </div>
