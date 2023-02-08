@@ -35,6 +35,9 @@ class Album extends Component {
       generatedList,
     } = this.state;
 
+    // const { location: { pathname } } = this.props;
+    // console.log(pathname);
+
     return (
       <div data-testid="page-album">
         <Header />
@@ -49,6 +52,7 @@ class Album extends Component {
               <MusicCard
                 key={ music.trackNumber }
                 musics={ music }
+                isAlbum={ 1 }
               />
             ))
           }

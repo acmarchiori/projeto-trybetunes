@@ -15,6 +15,10 @@ class Favorites extends Component {
     this.getFavorite();
   }
 
+  updateFavoriteSongs = (update) => {
+    this.setState({ favoriteSongs: update });
+  };
+
   getFavorite = async () => {
     this.setState({
       isLoading: true,
@@ -56,8 +60,9 @@ class Favorites extends Component {
                 ? <Loading />
                 : favoriteSongs.map((music) => (
                   <MusicCard
-                    key={ music.previewUrl }
+                    key={ music.trackId }
                     musics={ music }
+                    updateFavoriteSongs={ this.updateFavoriteSongs }
                   />
                 ))
             }
