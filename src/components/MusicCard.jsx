@@ -35,7 +35,6 @@ class MusicCard extends Component {
   handleFavorite = async () => {
     const { isFavorite } = this.state;
     const { musics, updateFavoriteSongs, isAlbum } = this.props;
-    console.log(isAlbum);
     this.setState({
       isLoading: true,
     });
