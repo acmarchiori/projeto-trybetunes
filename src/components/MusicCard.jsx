@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from '../pages/Loading';
+import '../styles/musicCard.css';
 
 class MusicCard extends Component {
   state = {
@@ -62,9 +63,9 @@ class MusicCard extends Component {
     const { isFavorite } = this.state;
     const { musics } = this.props;
     return (
-      <div>
-        <li>
-          <p>{ musics.trackName }</p>
+      <li className="music-card">
+        <div className="music-name">{ musics.trackName }</div>
+        <div className="audio-player">
           <audio
             data-testid="audio-component"
             src={ musics.previewUrl }
@@ -77,19 +78,23 @@ class MusicCard extends Component {
             <code>audio</code>
             .
           </audio>
-          <label htmlFor="favorite">
+        </div>
+        <div className="custom-checkbox">
+          <label htmlFor="heart">
             Favorita
+            {' '}
+            {' '}
             <input
               data-testid={ `checkbox-music-${musics.trackId}` }
               type="checkbox"
               name="checked"
-              id="favorite"
+              id="heart"
               checked={ isFavorite }
               onChange={ this.handleChange }
             />
           </label>
-        </li>
-      </div>
+        </div>
+      </li>
     );
   };
 

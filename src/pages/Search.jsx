@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
 import AlbumList from '../components/AlbumList';
+import '../styles/search.css';
 
 class Search extends Component {
   constructor() {
@@ -41,7 +42,7 @@ class Search extends Component {
     return (
       <div data-testid="page-search">
         <Header />
-        <form>
+        <form className="searchBar">
           <input
             type="text"
             name="search"
@@ -58,7 +59,7 @@ class Search extends Component {
             disabled={ buttonEnable }
             onClick={ this.callList }
           >
-            Pesquisar
+            PROCURAR
           </button>
         </form>
         <div>

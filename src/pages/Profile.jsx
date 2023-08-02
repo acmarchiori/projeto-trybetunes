@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import { getUser } from '../services/userAPI';
+import Loading from './Loading';
+import '../styles/profile.css';
 
 class Profile extends Component {
   state = {
@@ -18,35 +20,37 @@ class Profile extends Component {
     const { user, isLoading } = this.state;
 
     return (
-      <div data-testid="page-profile">
+      <div data-testid="page-profile" className="page-profile">
+        <Header />
         {isLoading ? (
-          <p>Carregando...</p>
+          <Loading />
         ) : (
           <div>
-            <Header />
-            <h2>Perfil</h2>
-            <p>
-              Nome:
-              {' '}
-              {user.name}
-            </p>
-            <p />
-            <p>
-              Email:
-              {' '}
-              {user.email}
-            </p>
-            <p>
-              Descrição:
-              {' '}
-              {user.description}
-            </p>
+            <div className="profile-background" />
             <img
+              className="profile-image"
               src={ user.image }
               alt={ user.name }
               data-testid="profile-image"
             />
-            <Link to="/profile/edit">Editar perfil</Link>
+            <div className="profile-info">
+              <p className="profile-name">
+                Nome
+                <br />
+                <span>{user.name}</span>
+              </p>
+              <p className="profile-email">
+                Email
+                <br />
+                <span>{user.email}</span>
+              </p>
+              <p className="profile-description">
+                Descrição
+                <br />
+                <span>{user.description}</span>
+              </p>
+              <Link to="/profile/edit" className="link">Editar perfil</Link>
+            </div>
           </div>
         )}
       </div>

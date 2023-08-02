@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Loading from '../pages/Loading';
 import { getUser } from '../services/userAPI';
+import '../styles/header.css'; // Importando o arquivo de estilos do Header
 
 class Header extends Component {
   state = {
     isLoading: true,
-    result: '',
+    name: '',
+    image: '',
   };
 
   componentDidMount() {
@@ -14,31 +16,51 @@ class Header extends Component {
   }
 
   resultGetUser = async () => {
-    const { name } = await getUser();
+    const { name, image } = await getUser();
     this.setState({
       isLoading: false,
-      result: name,
+      name,
+      image,
     });
     return name;
   };
 
   render() {
-    const { isLoading, result } = this.state;
+    const { isLoading, name, image } = this.state;
     return (
+      <header data-testid="header-component" className="header-component">
+        <div className="header-logo" />
+        <Link
+          to="/search"
+          data-testid="link-to-search"
+          className="header-link search"
+        >
+          Pesquisar
+        </Link>
+        <Link
+          to="/favorites"
+          data-testid="link-to-favorites"
+          className="header-link favorites"
+        >
+          Favoritas
 
-      <header data-testid="header-component">
+        </Link>
+        <Link
+          to="/profile"
+          data-testid="link-to-profile"
+          className="header-link profile"
+        >
+          Perfil
+
+        </Link>
         {
           isLoading ? <Loading /> : (
-            <h2 data-testid="header-user-name">
-              { result }
-            </h2>
+            <div className="header-footer">
+              <img src={ image } alt={ name } className="header-user-photo" />
+              <p data-testid="header-user-name" className="header-user-name">{name}</p>
+            </div>
           )
         }
-        <Link to="/search" data-testid="link-to-search">Pesquisar</Link>
-        <br />
-        <Link to="/favorites" data-testid="link-to-favorites">Favoritas</Link>
-        <br />
-        <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
       </header>
     );
   }

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap') ;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.page-favorites {
+  align-items: center; /* Centralizar verticalmente */
+  display: flex; /* Tornar a página um container flexível */
+  flex-direction: column; /* Organizar os elementos em coluna */
+  margin-left: 250px;
+  margin-top: 50px;
+}
+
+.music-card {
+  align-items: center; /* Alinhar verticalmente os itens */
+  color: #001813;
+  display: grid; /* Usar grid para criar as colunas */
+  font-family: Epilogue , sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  gap: 70px; /* Espaço entre as colunas */
+  grid-template-columns: 1fr 2fr 1fr; /* Três colunas com tamanhos flexíveis */
+  margin-bottom: 20px;
+}
+
+.music-name {
+  grid-column: 1; /* Ocupar a primeira coluna */
+}
+
+audio {
+  grid-column: 2; /* Ocupar a segunda coluna */
+}
+
+.favorite-icon {
+  grid-column: 3; /* Ocupar a terceira coluna */
+}
+
+
+.page-favorites-background {
+  align-items: center; /* Centralizar verticalmente */
+  background: url('../images/BG\ AZUL\ FAVORITES.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  display: flex; /* Tornar a div um container flexível */
+  height: 220px;
+  justify-content: center; /* Centralizar horizontalmente */
+  margin-left: 250px;
+}
+
+.page-favorites-background h2 {
+  color: white;
+  font-family: Epilogue , sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+

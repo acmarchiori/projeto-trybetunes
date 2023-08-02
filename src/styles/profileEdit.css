@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap') ;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.page-profileEdit {
+  position: relative;
+}
+
+.profileEdit-background {
+  background: url('../images/BG\ AZUL\ PROFILE\ EDIT.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  display: flex; /* Tornar a div um container flexível */
+  height: 220px;
+  justify-content: center; /* Centralizar horizontalmente */
+  margin-left: 250px;
+  position: relative;
+}
+
+.profileEdit-image {
+  border-radius: 50%; /* Tornar a imagem redonda */
+  height: 240px;
+  margin-left: 326px;
+  margin-top: -111px;
+  position: absolute; /* Definir a posição absoluta para sobrepor o background */
+  width: 240px;
+  z-index: 1; /* Elevar a imagem acima do background */
+}
+
+.profileEdit-input {
+  color: #3d495c;
+  font-family: Epilogue , sans-serif;
+  height: 37px;
+  margin-left: 350px;
+  margin-top: 150px;
+  width: 192px;
+}
+
+/* Estilos para o formulário */
+.form-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 45%;
+  margin-top: -110px; /* Espaçamento entre a imagem e o formulário */
+  position: absolute;
+}
+
+form {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 350px; /* Largura do formulário */
+}
+
+form label {
+  color: #3d495c;
+  font-family: Epilogue , sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+form p {
+  color: #3d495c;
+  font-family: Epilogue , sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+form input {
+  border: none;
+  border-bottom: 1px solid #3d495c;
+  color: #3d495c;
+  font-family: Epilogue , sans-serif;
+  font-size: 14px;
+  margin-top: 5px;
+  padding: 10px;
+}
+
+form textarea {
+  background-color: #f8f8f8;
+  border: none;
+  border-bottom: 1px solid #3d495c;
+  border-radius: 4px;
+  color: #3d495c;
+  font-family: Epilogue , sans-serif;
+  font-size: 14px;
+  height: 150px;
+  width: 490px;
+}
+
+form button {
+  background-color: #003be5;
+  border: none;
+  border-radius: 100px;
+  color: white;
+  cursor: pointer;
+  font-family: Epilogue , sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  height: 40px;
+  margin-top: 15px; /* Espaçamento entre o formulário e o botão */
+  outline: none;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+form button:disabled {
+  background-color: #999; /* Estilo para o botão desabilitado */
+  cursor: not-allowed;
+}
+
+/* Estilos para o botão de salvar habilitado */
+form button:enabled {
+  background-color: #003be5;
+}
+
+
+/* Estilo para o link do botão "Salvar" */
+form button a {
+  color: white;
+  text-decoration: none;
+}

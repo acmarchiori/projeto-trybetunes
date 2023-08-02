@@ -1,0 +1,59 @@
+/* album.css */
+
+/* Importar a fonte Epilogue */
+
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap') ;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.page-album-background {
+  background: url('../images/BG AZUL ALBUM.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  margin-left: 250px;
+  padding-top: 220px;
+  position: relative;
+}
+
+/* Estilos para a capa do álbum */
+.page-album img {
+  border-radius: 8px;
+  box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.5);
+  height: 240px;
+  margin-left: 327px;
+  margin-top: -110px;
+  position: absolute;
+  width: 240px;
+}
+
+/* Estilos para o nome do álbum */
+.page-album-name {
+  color: white;
+  font-family: Epilogue , sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 612px;
+  margin-top: -100px;
+  position: absolute;
+}
+
+/* Estilos para o nome do artista */
+.page-album-artist {
+  color: white;
+  font-family: Epilogue , sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 612px;
+  margin-top: -50px;
+  position: absolute;
+}
+
+/* Estilos para a lista de músicas */
+.page-album-list {
+  margin-left: 612px;
+  margin-top: 50px;
+}

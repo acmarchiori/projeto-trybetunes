@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap') ;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.page-profile {
+  position: relative;
+}
+
+.profile-background {
+  background: url('../images/BG AZUL PROFILE.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  display: flex; /* Tornar a div um container flexível */
+  height: 220px;
+  justify-content: center; /* Centralizar horizontalmente */
+  margin-left: 250px;
+  position: relative;
+}
+
+.profile-image {
+  border-radius: 50%; /* Tornar a imagem redonda */
+  height: 240px;
+  margin-left: 326px;
+  margin-top: -111px;
+  position: absolute; /* Definir a posição absoluta para sobrepor o background */
+  width: 240px;
+  z-index: 1; /* Elevar a imagem acima do background */
+}
+
+.profile-info {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  left: 45%;
+  position: absolute;
+  top: 130%;
+  width: 490px;
+}
+
+.profile-info p {
+  color: #3d495c;
+  font-family: Epilogue , sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.profile-description span {
+  margin-bottom: 200px;
+}
+
+.profile-info p span {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+
+.link {
+  background: #003be5;
+  border-radius: 100px;
+  bottom: 30px;
+  color: white;
+  font-family: Epilogue , sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 28px;
+  position: absolute;
+  text-decoration: none;
+  text-transform: uppercase;
+  top: 200%;
+  width: 152px;
+}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import MusicCard from '../components/MusicCard';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
+import '../styles/album.css';
 
 class Album extends Component {
   state = {
@@ -35,18 +36,16 @@ class Album extends Component {
       generatedList,
     } = this.state;
 
-    // const { location: { pathname } } = this.props;
-    // console.log(pathname);
-
     return (
       <div data-testid="page-album">
         <Header />
-        <section>
+        <div className="page-album-background" />
+        <section className="page-album">
           <img src={ artworkUrl100 } alt={ collectionName } />
-          <h2 data-testid="album-name">{ collectionName }</h2>
-          <h2 data-testid="artist-name">{ artistName }</h2>
+          <h2 data-testid="album-name" className="page-album-name">{ collectionName }</h2>
+          <h2 data-testid="artist-name" className="page-album-artist">{ artistName }</h2>
         </section>
-        <div>
+        <div className="page-album-list">
           {
             generatedList.slice(1).map((music) => (
               <MusicCard

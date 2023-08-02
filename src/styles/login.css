@@ -1,0 +1,96 @@
+/* login.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap') ;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.login {
+  align-items: center;
+  background: url('../images/BG AZUL LOGIN.png') , linear-gradient(123.66deg, #003be5 12.08%, #00d5e2 86.52%);
+  background-position: center , center;
+  background-repeat: no-repeat , no-repeat;
+  background-size: 100% 100% , cover;
+  display: flex;
+  height: 100vh; /* Para ocupar toda a tela verticalmente */
+  justify-content: center;
+  margin: 0;
+}
+
+/* Estilos para o input */
+.login-input {
+  background-color: white;
+  border: 1px solid #003be5;
+  border-radius: 100px;
+  color: #003be5;
+  font-family: Epilogue , sans-serif;
+  height: 40px;
+  margin-top: 200px;
+  outline: none; /* Remova a borda padrão do input ao receber foco */
+  padding: 10px;
+  text-align: center;
+  width: 400px;
+}
+
+.login-input::placeholder {
+  color: #003be5; /* Cor do placeholder (texto de exemplo) */
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Estilos para o botão */
+.login-button {
+  background-color: #003be5;
+  border: none;
+  border-radius: 100px;
+  color: white;
+  cursor: pointer;
+  font-family: Epilogue , sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  height: 40px;
+  left: 440px;
+  margin-top: 15px;
+  outline: none;
+  top: 464px;
+  transition: background-color 0.3s;
+  width: 400px;
+}
+
+.login-button:hover {
+  background-color: #00d5e2;
+}
+
+/* Estiliza o botão quando desativado */
+.login-button[ disabled ] {
+  background-color: gray; /* Fundo cinza para o botão desativado */
+  cursor: not-allowed; /* Altera o cursor para indicar que o botão está desativado */
+}
+
+/* Estilos para o bloco central */
+.login-container {
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  justify-content: center;
+  position: relative; /* Adicione a propriedade position: relative; */
+  width: 750px;
+}
+
+/* Estilos para o logotipo */
+.login-logo {
+  background-image: url('../images/logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 104.89px;
+  left: 50%; /* Define o left como 50% */
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 187.19px;
+}

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getUser, updateUser } from '../services/userAPI';
 import Header from '../components/Header';
+import '../styles/profileEdit.css';
+import Loading from './Loading';
 
 class ProfileEdit extends Component {
   state = {
@@ -9,7 +11,7 @@ class ProfileEdit extends Component {
       name: '',
       email: '',
       description: '',
-      image: '',
+      image: null,
     },
     isLoading: true,
     isSaveButtonEnabled: false,
@@ -18,7 +20,7 @@ class ProfileEdit extends Component {
   async componentDidMount() {
     try {
       const user = await getUser();
-      this.setState({ user, isLoading: false });
+      this.setState({ user, isLoading: false }, this.checkSaveButtonStatus);
     } catch (error) {
       console.error('Erro ao carregar informações do usuário:', error);
     }
@@ -41,8 +43,8 @@ class ProfileEdit extends Component {
     const { user } = this.state;
     const { name, email, description, image } = user;
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isSaveButtonEnabled = name.trim()
-    && email.trim() && description.trim() && image.trim() && emailPattern.test(email);
+    const isSaveButtonEnabled = name?.trim()
+    && email?.trim() && description?.trim() && image?.trim() && emailPattern.test(email);
     this.setState({ isSaveButtonEnabled });
   };
 
@@ -76,72 +78,81 @@ class ProfileEdit extends Component {
     const { name, email, description, image } = user;
 
     return (
-      <div data-testid="page-profile-edit">
+      <div data-testid="page-profile-edit" className="page-profileEdit">
         <Header />
         {isLoading ? (
-          <p>Carregando...</p>
+          <Loading />
         ) : (
-          <form>
-            <label htmlFor="name">
-              Nome:
-              <input
-                id="name"
-                type="text"
-                name="name"
-                value={ name }
-                onChange={ this.handleChange }
-                data-testid="edit-input-name"
-                required
-              />
-            </label>
-            <br />
-            <label htmlFor="email">
-              Email:
-              <input
-                id="email"
-                type="email"
-                name="email"
-                value={ email }
-                onChange={ this.handleChange }
-                data-testid="edit-input-email"
-                required
-              />
-            </label>
-            <br />
-            <label htmlFor="description">
-              Descrição:
-              <textarea
-                id="description"
-                name="description"
-                value={ description }
-                onChange={ this.handleChange }
-                data-testid="edit-input-description"
-                required
-              />
-            </label>
-            <br />
-            <label htmlFor="image">
-              Foto:
-              <input
-                id="image"
-                type="url"
-                name="image"
-                value={ image }
-                onChange={ this.handleChange }
-                data-testid="edit-input-image"
-                required
-              />
-            </label>
-            <br />
-            <button
-              type="button"
-              onClick={ this.handleSave }
-              data-testid="edit-button-save"
-              disabled={ !isSaveButtonEnabled }
-            >
-              Salvar
-            </button>
-          </form>
+          <>
+            <div className="profileEdit-background" />
+            <img
+              className="profileEdit-image"
+              src={ user.image }
+              alt={ user.name }
+              data-testid="profile-image"
+            />
+            <input
+              className="profileEdit-input"
+              id="image"
+              type="url"
+              name="image"
+              placeholder="insira um link"
+              value={ image }
+              onChange={ this.handleChange }
+              data-testid="edit-input-image"
+              required
+            />
+            <div className="form-container">
+              <form>
+                <label htmlFor="name">
+                  Nome:
+                  <p>Fique a vontade para usar seu nome social</p>
+                  <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    value={ name }
+                    onChange={ this.handleChange }
+                    data-testid="edit-input-name"
+                    required
+                  />
+                </label>
+                <label htmlFor="email">
+                  Email:
+                  <p>Escolha um e-mail que consulte diariamente</p>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    value={ email }
+                    onChange={ this.handleChange }
+                    data-testid="edit-input-email"
+                    required
+                  />
+                </label>
+                <label htmlFor="description">
+                  Descrição:
+                  <br />
+                  <textarea
+                    id="description"
+                    name="description"
+                    value={ description }
+                    onChange={ this.handleChange }
+                    data-testid="edit-input-description"
+                    required
+                  />
+                </label>
+                <button
+                  type="button"
+                  onClick={ this.handleSave }
+                  data-testid="edit-button-save"
+                  disabled={ !isSaveButtonEnabled }
+                >
+                  Salvar
+                </button>
+              </form>
+            </div>
+          </>
         )}
       </div>
     );

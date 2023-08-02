@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Loading from '../pages/Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import '../styles/albumList.css';
 
 class AlbumList extends Component {
   constructor() {
@@ -30,30 +31,36 @@ class AlbumList extends Component {
     const { artistName, generatedList } = this.state;
 
     if (generatedList.length === 0) {
-      return <p>Nenhum álbum foi encontrado</p>;
+      return (
+        <div className="no-album-found">
+          <span className="error-icon" />
+          <p>Nenhum álbum foi encontrado</p>
+        </div>
+      );
     }
+
     return (
       <>
-        <p>
+        <p className="result-heading">
           Resultado de álbuns de:
           {' '}
           {artistName}
         </p>
-
-        {generatedList.map((album) => (
-          <p key={ album.collectionId }>
-            <Link
-              data-testid={ `link-to-album-${album.collectionId}` }
-              to={ `/album/${album.collectionId}` }
-            >
-              <img src={ album.artworkUrl100 } alt={ album.collectionName } />
-              <br />
-              {album.collectionName}
-
-            </Link>
-          </p>
-        ))}
-
+        <div className="album-list">
+          {generatedList.map((album) => (
+            <div className="album-item" key={ album.collectionId }>
+              <Link
+                data-testid={ `link-to-album-${album.collectionId}` }
+                to={ `/album/${album.collectionId}` }
+              >
+                <img src={ album.artworkUrl100 } alt={ album.collectionName } />
+                {album.collectionName}
+                <br />
+                {artistName}
+              </Link>
+            </div>
+          ))}
+        </div>
       </>
     );
   };

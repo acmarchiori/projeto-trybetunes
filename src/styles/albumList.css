@@ -1,0 +1,86 @@
+/* albumList.css */
+
+/* Importar a fonte Epilogue */
+
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap') ;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para a lista de álbuns */
+.album-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Estilos para cada álbum */
+.album-item {
+  border-radius: 8px;
+  font-family: Epilogue , sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+  width: 250px; /* Largura de cada álbum */
+}
+
+.album-item img {
+  border-radius: 6px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.album-item a {
+  color: #003be5;
+  text-decoration: none;
+}
+
+.album-item a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para a mensagem de "Nenhum álbum encontrado" */
+.no-album-found {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 100px); /* Altura da tela - altura do header */
+  justify-content: center;
+}
+
+.no-album-found p {
+  color: #c0c3c9;
+  font-family: Epilogue , sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  margin-left: 250px;
+}
+
+/* Estilos para o ícone de erro */
+.no-album-found .error-icon {
+  background-image: url('../images/icon _circle error_.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 70px;
+  margin-bottom: 10px;
+  margin-left: 250px;
+  width: 70px;
+}
+
+/* Estilos para o parágrafo "Resultado de álbuns de" */
+.result-heading {
+  color: #003be5;
+  font-family: Epilogue , sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  margin-left: 250px;
+  margin-top: 20px;
+  text-align: center;
+}

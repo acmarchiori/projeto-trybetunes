@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap') ;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.music-card {
+  align-items: center;
+  color: #001813;
+  display: flex;
+  font-family: Epilogue , sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  margin-right: 40px;
+}
+
+.music-name {
+  flex: 1; /* Ocupa todo o espaço disponível na coluna */
+}
+
+.audio-player {
+  flex: 2; /* Ocupa duas vezes mais espaço que o nome da música */
+}
+
+.favorite-checkbox {
+  flex: 1; /* Ocupa o mesmo espaço que o nome da música */
+}
+

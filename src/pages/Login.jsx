@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
+import '../styles/login.css';
 
 const INITIAL_STATE = {
   nameInput: '',
@@ -51,11 +52,13 @@ class Login extends Component {
     } = this.state;
 
     return (
-      <div data-testid="page-login">
+      <div data-testid="page-login" className="login">
         {
           isLoading ? <Loading /> : (
-            <form>
+            <form className="login-container">
+              <div className="login-logo" />
               <input
+                className="login-input"
                 data-testid="login-name-input"
                 type="text"
                 name="nameInput"
@@ -66,6 +69,7 @@ class Login extends Component {
                 onChange={ this.handleChange }
               />
               <button
+                className="login-button"
                 type="button"
                 data-testid="login-submit-button"
                 disabled={ buttonEnable }

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@200;400;700&display=swap') ;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.notFound {
+  align-items: center;
+  background: url('../images/BG\ AZUL\ NOTFOUND.png') , linear-gradient(123.66deg, #00d5e2  12.08%, #003be5 86.52%);
+  background-position: center , center;
+  background-repeat: no-repeat , no-repeat;
+  display: flex;
+  height: 100vh; /* Para ocupar toda a tela verticalmente */
+  justify-content: center;
+  margin: 0;
+}
+
+h1 {
+  color: #003be5;
+  font-family: Epilogue , sans-serif;
+  font-size: 90px;
+  font-weight: 400;
+  margin-right: 50px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  color: #00d5e2;
+  font-family: Epilogue , sans-serif;
+  font-weight: 200;
+  line-height: 1.2;
+  max-width: 230px;
+}

@@ -1,0 +1,74 @@
+/* search.css */
+
+/* Importar a fonte Epilogue */
+
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap') ;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para o componente Search */
+.page-search {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.header-component {
+  position: fixed; /* Fixar o componente Header no topo */
+  top: 0;
+  width: 250px;
+}
+
+.searchBar {
+  align-items: center;
+  background: url('../images/BG AZUL SEARCH.png') , linear-gradient(123.66deg, #003be5 12.08%, #00d5e2 86.52%);
+  background-repeat: no-repeat , no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  height: 25vh; /* 25% da altura total da página */
+  justify-content: space-around; /* Alinhar os itens no topo */
+  margin-left: 250px; /* Deixar espaço à esquerda para o Header */
+  padding: 100px; /* Espaçamento interno */
+  width: calc(100% - 250px);
+}
+
+/* Estilos para o input */
+.searchBar input {
+  background-color: white;
+  background-image: url('../images/Lupa.png');
+  background-position: center right 10px;
+  background-repeat: no-repeat;
+  background-size: 18px; /* Tamanho do ícone de lupa */
+  border: none;
+  border-radius: 100px;
+  font-family: Epilogue , sans-serif;
+  font-size: 14px;
+  height: 40px;
+  outline: none;
+  padding: 10px;
+  width: 400px;
+}
+
+/* Estilos para o botão */
+.searchBar button {
+  background-color: #00d5e2;
+  border: none;
+  border-radius: 100px;
+  color: white;
+  cursor: pointer;
+  font-family: Epilogue , sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  height: 40px;
+  outline: none;
+  padding: 10px;
+  width: 114px;
+}
+

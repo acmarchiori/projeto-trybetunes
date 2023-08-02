@@ -1,0 +1,89 @@
+/* header.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap') ;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para o componente Header */
+.header-component {
+  align-items: left; /* Centralizar verticalmente */
+  background-color: white;
+  bottom: 0; /* Alinhar na parte inferior */
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ocupar toda a altura da página */
+  justify-content: space-between; /* Espaçamento entre os itens */
+  padding: 20px 0;
+  position: fixed; /* Fixar o componente na página */
+  top: 0; /* Alinhar no topo */
+  width: 250px;
+}
+
+/* Estilos para o logotipo */
+.header-logo {
+  background-image: url('../images/logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 96px;
+  margin-bottom: 180px;
+  margin-left: 40px;
+  width: 171px;
+}
+
+/* Estilos para os links */
+.header-link {
+  align-items: center;
+  color: #444955;
+  display: flex;
+  font-family: Epilogue , sans-serif;
+  font-weight: 400;
+  margin-left: 40px;
+  text-decoration: none;
+}
+
+.header-link.search {
+  background-image: url('../images/Lupa.png');
+  background-repeat: no-repeat;
+  background-size: 18px;
+  padding-left: 30px;
+}
+
+.header-link.favorites {
+  background-image: url('../images/icon _star empty_.png');
+  background-repeat: no-repeat;
+  background-size: 18px;
+  padding-left: 30px;
+}
+
+.header-link.profile {
+  background-image: url('../images/icon _profile_.png');
+  background-repeat: no-repeat;
+  background-size: 18px;
+  padding-left: 30px;
+}
+
+/* Estilos para a foto do usuário e nome */
+.header-footer {
+  align-items: center;
+  display: flex;
+  margin-bottom: 15px;
+  margin-top: 180px;
+}
+
+.header-user-photo {
+  border-radius: 19.61px;
+  height: 40px;
+  margin-left: 40px;
+  margin-right: 5px;
+  width: 40px;
+}
+
+.header-user-name {
+  font-family: Epilogue , sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
